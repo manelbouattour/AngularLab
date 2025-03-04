@@ -1,0 +1,44 @@
+.actions-cell {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Espacement entre les boutons */
+    padding: 8px 0;
+  }
+  
+  button {
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .btn-edit {
+    background: #00C897; /* Vert moderne */
+    color: white;
+    border-radius: 10px;
+    padding: 8px;
+    box-shadow: 0 4px 10px rgba(0, 200, 151, 0.3);
+  }
+  
+  .btn-edit:hover {
+    background: #00A57E;
+    transform: scale(1.1);
+  }
+  
+  .btn-delete {
+    background: #FF6B6B; /* Rouge moderne */
+    color: white;
+    border-radius: 10px;
+    padding: 8px;
+    box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+  }
+  
+  .btn-delete:hover {
+    background: #E63E3E;
+    transform: scale(1.1);
+  }
+  
+  .mat-icon {
+    font-size: 20px;
+  }
+  
