@@ -14,5 +14,7 @@ export class PubService {
     return this.http.get<Pub[]>
     ('http://localhost:3000/Pub')
   }
-
+  getPubById(id:string):Observable<Pub>{
+    return this.http.get<Pub>(`http://localhost:3000/Pub/${id}`)
+  }
 }

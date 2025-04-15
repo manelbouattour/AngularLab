@@ -56,7 +56,7 @@ export class EventsComponent implements OnInit,AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
-  open(){
+  open(){//envoyer les données vers la boite
     let dialogRef = this.dialog.open(ModalEvtComponent, {
       height: '400px',
       width: '600px',

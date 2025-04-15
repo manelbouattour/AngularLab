@@ -33,6 +33,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireModule } from '@angular/fire/compat';
 import { firebaseConfig } from './environment';
 import { LoginComponent } from './login/login.component';
+import { PubVisibilityComponent } from './pub-visibility/pub-visibility.component';
+import {MatCardModule} from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +47,8 @@ import { LoginComponent } from './login/login.component';
     ArticlesComponent,
     DashboardComponent,
     ModalEvtComponent,
-    LoginComponent
+    LoginComponent,
+    PubVisibilityComponent
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
@@ -69,7 +72,8 @@ import { LoginComponent } from './login/login.component';
     MatSortModule,
     MatPaginatorModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
