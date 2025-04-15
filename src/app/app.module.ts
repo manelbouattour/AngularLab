@@ -35,6 +35,7 @@ import { firebaseConfig } from './environment';
 import { LoginComponent } from './login/login.component';
 import { PubVisibilityComponent } from './pub-visibility/pub-visibility.component';
 import {MatCardModule} from '@angular/material/card';
+import { NgChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +74,8 @@ import {MatCardModule} from '@angular/material/card';
     MatPaginatorModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCardModule
+    MatCardModule,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

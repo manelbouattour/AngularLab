@@ -1,5 +1,5 @@
 export interface Member{ //export pour qu'on puisse exporter ailleurs
-    id:string,
+    idMember:string,
     cin:string,
     name:string,
     type:string,
