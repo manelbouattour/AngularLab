@@ -6,6 +6,8 @@ import { Evt } from 'src/Modeles/Evt';
 import { EvtService } from 'src/Services/evt.service';
 import { ModalEvtComponent } from '../modal-evt/modal-evt.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { FormControl, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -25,6 +27,10 @@ export class EventsComponent implements OnInit,AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   
+  readonly range = new FormGroup({
+    start: new FormControl<Date | null>(null),
+    end: new FormControl<Date | null>(null),
+  });
 
   fetchData() {
     this.ES.GetAllEvents() //flèche1 
@@ -58,7 +64,7 @@ export class EventsComponent implements OnInit,AfterViewInit {
     dialogRef.afterClosed().subscribe(data=>{
 
       console.log("Dialog output :",data)
-      if(data){
+      if(data){ //idha les champs
         this.ES.addEvent(data).subscribe(()=>{
           this.fetchData()
         })
@@ -75,8 +81,30 @@ export class EventsComponent implements OnInit,AfterViewInit {
         //lancer la boite ModalEvtComponent
         let dialogRef = this.dialog.open(ModalEvtComponent,DialogConfig)
         //Envoie de données vers la boite ModalEvtComponent
+        dialogRef.afterClosed().subscribe(data=>{
+          if(data){ //c pas necessaire
+            this.ES.updateEvt(id,data).subscribe(()=>{
+              this.fetchData()
+            })
+          }
         });
+    })
+}
+
+delete(id:number){
+  let dialogRef = this.dialog.open(ConfirmDialogComponent, {
+    height: '200px',
+    width: '300px',
+  });
+  dialogRef.afterClosed().subscribe((result) => {
+    if(result){
+      this.ES.deleteEvtById(id).subscribe(()=>{
+        this.fetchData()
+      })
     }
+  });
+}
+
 }
 
 

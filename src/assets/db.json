@@ -10,39 +10,11 @@
   ],
   "Evt": [
     {
-      "id": "1",
-      "titre": "conf",
-      "datedebut": "28/02/2021",
-      "dateFin": "28/02/2021",
-      "Lieu": "sfax"
-    },
-    {
-      "id": "2",
-      "titre": "conf",
-      "datedebut": "28/02/2021",
-      "dateFin": "8/02/2021",
-      "Lieu": "sfax"
-    },
-    {
-      "id": "3",
-      "titre": "aa",
-      "datedebut": "28/02/2021",
-      "dateFin": "28/02/2020",
-      "Lieu": "sfax"
-    },
-    {
-      "id": "4",
-      "titre": "bh",
-      "datedebut": "28/02/2001",
-      "dateFin": "28/02/2001",
-      "Lieu": "sfax"
-    },
-    {
-      "id": "5",
-      "titre": "er",
+      "titre": "eraaaaa",
       "datedebut": "28/02/2012",
       "dateFin": "28/02/2012",
-      "Lieu": "sfax"
+      "Lieu": "sfax",
+      "id": "5"
     },
     {
       "id": "6",
@@ -93,5 +65,25 @@
       "dateFin": "21/21/2011",
       "Lieu": "TUNIS"
     }
+  ],
+  "Pub" :[
+  
+    {
+      "id": "1",
+      "type": "publication",
+      "titre": "tt",
+     "lien":"href",
+     "datePub":"12/12/2001",
+     "sourcePDF":"DOI"
+    },
+    {
+      "id": "2",
+      "type": "pub",
+      "titre": "edge computing",
+     "lien":"href",
+     "datePub":"12/12/2001",
+     "sourcePDF":"DOI"
+    }
+    
   ]
 }

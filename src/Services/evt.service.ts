@@ -23,4 +23,13 @@ export class EvtService {
   {
     return this.http.get<Evt>(`http://localhost:3000/Evt/${id}`)
   }
+  updateEvt(id:number,x:Evt):Observable<void>
+  {
+    return this.http.put<void>(`http://localhost:3000/Evt/${id}`,x)
+  }
+  deleteEvtById(id:number):Observable<Evt[]>
+  {
+    return this.http.delete<Evt[]>(`http://localhost:3000/Evt/${id}`)
+  }
+ 
 }

@@ -16,7 +16,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { TemplateComponent } from './template/template.component';
-
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
@@ -28,8 +27,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ModalEvtComponent } from './modal-evt/modal-evt.component';
-
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireModule } from '@angular/fire/compat';
+import { firebaseConfig } from './environment';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,9 +44,12 @@ import { ModalEvtComponent } from './modal-evt/modal-evt.component';
     EventsComponent,
     ArticlesComponent,
     DashboardComponent,
-    ModalEvtComponent
+    ModalEvtComponent,
+    LoginComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -61,7 +67,9 @@ import { ModalEvtComponent } from './modal-evt/modal-evt.component';
     MatListModule,
     MatMenuModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

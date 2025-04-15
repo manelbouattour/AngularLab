@@ -1,0 +1,75 @@
+/* Conteneur principal du formulaire */
+.dialog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px); /* Effet verre givré */
+    border-radius: 12px;
+}
+
+/* Champs de formulaire modernes */
+.custom-input {
+    width: 100%;
+    background: white;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.custom-input.mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #3f51b5; /* Bordure bleue moderne */
+}
+
+.custom-input:hover {
+    transform: scale(1.02);
+}
+
+.custom-input.mat-focused {
+    border-color: #3f51b5;
+}
+
+/* Conteneur des boutons */
+.dialog-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-top: 1px solid #ddd;
+    border-radius: 0 0 12px 12px;
+}
+
+/* Bouton Annuler moderne */
+.modern-cancel-button {
+    font-size: 16px;
+    font-weight: 500;
+    color: #666;
+    background: transparent;
+    border: none;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 8px;
+}
+
+.modern-cancel-button:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* Bouton Enregistrer avec un effet moderne */
+.modern-save-button {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #3f51b5, #1e88e5);
+    color: white;
+    transition: all 0.3s ease-in-out;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.modern-save-button:hover {
+    background: linear-gradient(135deg, #283593, #1565c0);
+    box-shadow: 0px 4px 10px rgba(33, 150, 243, 0.3);
+    transform: scale(1.05);
+}

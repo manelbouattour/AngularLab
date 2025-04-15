@@ -18,13 +18,13 @@
   
     <!-- Side nav content-->
     <mat-sidenav-content>
-      <mat-toolbar color="primary">
+      <mat-toolbar color="primary" *ngIf="!isLogin">
         <div fxFlex fxLayout fxLayoutAlign="start center" >
           <button type="button" aria-label="Toggle sidenav" class="toolbar-button"
                   mat-icon-button (click)="drawer.toggle()">
             <mat-icon aria-label="Side nav toggle icon">menu</mat-icon><span> Lab</span>
           </button>
-     
+
         </div>
 
              
@@ -47,7 +47,7 @@
             <mat-icon>account_box</mat-icon>
             <span>Profile</span>
           </button>
-          <button class="" mat-menu-item >
+          <button class="" mat-menu-item (click)="logout()" >
             <mat-icon>exit_to_app</mat-icon>
             <span>Logout</span>
           </button>

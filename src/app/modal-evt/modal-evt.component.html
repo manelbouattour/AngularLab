@@ -1,34 +1,26 @@
+<mat-dialog-content [formGroup]="form" class="dialog-content">
+    <mat-form-field appearance="outline" class="custom-input">
+        <mat-label>Titre</mat-label>
+        <input matInput formControlName="titre">
+    </mat-form-field>
 
-<mat-dialog-content [formGroup]="form">
-  
- 
-    <mat-form-field>
-        <input matInput
-                placeholder="Titre"
-               formControlName="titre">
+    <mat-form-field appearance="outline" class="custom-input">
+        <mat-label>Date Debut / Date Fin</mat-label>
+        <mat-date-range-input [formGroup]="form" [rangePicker]="picker">
+            <input matStartDate formControlName="datedebut" placeholder="Début">
+            <input matEndDate formControlName="dateFin" placeholder="Fin">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
     </mat-form-field>
-<br/>
-    <mat-form-field>
-        <input matInput
-                placeholder="Date de début"
-               formControlName="datedebut">
+
+    <mat-form-field appearance="outline" class="custom-input">
+        <mat-label>Lieu</mat-label>
+        <input matInput formControlName="Lieu">
     </mat-form-field>
-    <br/>
-    <mat-form-field>
-        <input matInput
-                placeholder="Date de fin"
-               formControlName="dateFin">
-    </mat-form-field>
-    <br/>
-    <mat-form-field>
-        <input matInput
-                placeholder="Lieu"
-               formControlName="Lieu">
-    </mat-form-field>
-    <br/>
- 
 </mat-dialog-content>
-<mat-dialog-actions>
-    <button class="mat-raised-button"(click)="close()">Close</button>
-    <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
+
+<mat-dialog-actions class="dialog-actions">
+    <button mat-button class="modern-cancel-button" (click)="close()">Annuler</button>
+    <button mat-raised-button class="modern-save-button" (click)="save()">Enregistrer</button>
 </mat-dialog-actions>
