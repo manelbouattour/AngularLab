@@ -1,21 +1,48 @@
-/* Style général pour les cartes */
-mat-card {
+/* Conteneur des cartes en haut */
+.top-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
   margin: 16px;
+  max-width: 1200px;
+  margin: 0 auto 32px;
+}
+
+/* Ligne de graphiques */
+.chart-row {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 32px;
+}
+
+/* Style des conteneurs de graphiques */
+.chart-wrapper {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+  padding: 16px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style général des cartes */
+mat-card {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  min-width: 200px;
   text-align: center;
 }
 
-/* Effet au survol */
 mat-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Style du titre des cartes */
 mat-card-title {
   font-size: 1.2rem;
   font-weight: 500;
@@ -23,38 +50,39 @@ mat-card-title {
   margin-bottom: 12px;
 }
 
-/* Style du contenu des cartes */
 mat-card-content {
   font-size: 2rem;
   font-weight: bold;
-  color: #3f51b5; /* Couleur primaire Material */
-}
-
-/* Conteneur pour les cartes - disposition en ligne */
-:host {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
-  margin-bottom: 32px;
-}
-
-/* Style pour le conteneur du graphique */
-.chart-wrapper {
-  width: 100%;
-  max-width: 800px;
-  margin: 32px auto;
-  padding: 16px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  color: #3f51b5;
 }
 
 /* Responsive design */
+@media (max-width: 1000px) {
+  .top-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .chart-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .chart-wrapper {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
 @media (max-width: 600px) {
+  .top-cards {
+    grid-template-columns: 1fr;
+  }
+  
   mat-card {
     min-width: 120px;
-    margin: 8px;
   }
   
   mat-card-title {
@@ -67,39 +95,5 @@ mat-card-content {
   
   .chart-wrapper {
     padding: 8px;
-  }
-}
-
-/* Conteneur pour les deux graphiques */
-.charts-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 32px;
-  width: 100%;
-  margin: 32px auto;
-}
-
-/* Style pour chaque conteneur de graphique */
-.chart-wrapper {
-  flex: 1;
-  min-width: 300px; /* Largeur minimale avant le passage en colonne */
-  max-width: 500px; /* Largeur maximale de chaque graphique */
-  padding: 16px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Responsive design */
-@media (max-width: 800px) {
-  .charts-container {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .chart-wrapper {
-    width: 100%;
-    max-width: 100%;
   }
 }

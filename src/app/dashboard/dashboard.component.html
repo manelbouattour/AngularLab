@@ -1,57 +1,62 @@
-<mat-card appearance="outlined">
-  <mat-card-title>Members</mat-card-title>
-  <mat-card-content>{{NbMembers}}</mat-card-content>
+<!-- Section des cartes en haut -->
+<div class="top-cards">
+  <mat-card appearance="outlined">
+    <mat-card-title>Members</mat-card-title>
+    <mat-card-content>{{NbMembers}}</mat-card-content>
+  </mat-card>
 
-</mat-card>
+  <mat-card appearance="outlined">
+    <mat-card-title>Articles</mat-card-title>
+    <mat-card-content>{{NbArticles}}</mat-card-content>
+  </mat-card>
 
-<mat-card appearance="outlined">
+  <mat-card appearance="outlined">
+    <mat-card-title>Events</mat-card-title>
+    <mat-card-content>{{NbEvents}}</mat-card-content>
+  </mat-card>
+
+  <mat-card appearance="outlined">
+    <mat-card-title>tools</mat-card-title>
+    <mat-card-content>{{NbTools}}</mat-card-content>
+  </mat-card>
+</div>
+
+<!-- Première ligne de graphiques -->
+<div class="chart-row">
+  <div class="chart-wrapper">
+    <canvas baseChart
+            [type]="'doughnut'"
+      [datasets]="chartData"
+      [labels]="chartLabels"
+      [options]="chartOptions">
+    </canvas>
+  </div>
   
-  <mat-card-title>Articles</mat-card-title>
-  <mat-card-content>{{NbArticles}}</mat-card-content>
-
-</mat-card>
-
-<mat-card appearance="outlined">
-
-  <mat-card-title>Events</mat-card-title>
-  <mat-card-content>{{NbEvents}}</mat-card-content>
-
-</mat-card>
-
-<mat-card appearance="outlined">
-  <mat-card-title>tools</mat-card-title>
-  <mat-card-content>{{NbTools}}</mat-card-content>
-
-
-</mat-card>
-<div class="charts-container">
-<div class="chart-wrapper">
-  <canvas baseChart
-          [type]="'doughnut'"
-    [datasets]="chartData"
-    [labels]="chartLabels"
-    [options]="chartOptions"
-    >
-  </canvas>
+  <div class="chart-wrapper">
+    <canvas baseChart
+            [type]="'pie'"
+      [datasets]="chartDataPie"
+      [labels]="chartLabelsPie"
+      [options]="chartOptions">
+    </canvas>
+  </div>
 </div>
-<div class="chart-wrapper">
-  <canvas baseChart
-          [type]="'pie'"
-    [datasets]="chartDataPie"
-    [labels]="chartLabelsPie"
-    [options]="chartOptions"
-    >
-  </canvas>
-</div>
-<div class="chart-wrapper">
-  <canvas baseChart
-          [type]="'line'"
-    [datasets]="chartDataLine"
-    [labels]="chartLabelsLine"
-    [options]="chartOptions"
-    >
-  </canvas>
-</div>
+
+<!-- Deuxième ligne de graphiques -->
+<div class="chart-row">
+  <div class="chart-wrapper">
+    <canvas baseChart
+            [type]="'line'"
+      [datasets]="chartDataLine"
+      [labels]="chartLabelsLine"
+      [options]="chartOptions">
+    </canvas>
+  </div>
+  
+  <!-- Ajoutez un quatrième graphique si nécessaire -->
+  <div class="chart-wrapper">
+    <!-- Autre graphique ici -->
+  </div>
 </div>
 <!-- 
 [datasets]="chartData" axe des y

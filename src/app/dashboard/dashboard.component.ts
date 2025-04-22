@@ -51,6 +51,7 @@ export class DashboardComponent {
   nbSousse:number=0;
   nbTunis:number=0;
   nbSfax:number=0;
+  tab_nb:number[]=[]
   constructor(private MS :MemberService,private ES:EvtService,private PS:PubService){
     this.MS.GetAllMembers().subscribe((res)=>{
       this.NbMembers=res.length
@@ -64,9 +65,15 @@ export class DashboardComponent {
       for(let i=0;i<this.NbMembers;i++)
         {
         this.Tab.push(res[i].name)
+        this.tab_nb.push(res[i].tab_evt.length)
       }
       this.chartLabelsLine=this.Tab;
+    this.chartDataLine=[
+      {
+        data : this.tab_nb
 
+      }
+    ];
       this.chartDataPie= [
         {
           data: [this.nbStudent,this.nbTeacher]
