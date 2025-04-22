@@ -96,7 +96,7 @@ export class DashboardComponent {
 
       this.chartData = [
         {
-          label: 'Events by Location',
+          label: 'EVT par lieu',
           data: counts,
           backgroundColor: [
             '#FF6384',
