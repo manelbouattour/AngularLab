@@ -24,20 +24,12 @@
 <!-- Première ligne de graphiques -->
 <div class="chart-row">
   <div class="chart-wrapper">
-    <canvas baseChart
-            [type]="'doughnut'"
-      [datasets]="chartData"
-      [labels]="chartLabels"
-      [options]="chartOptions">
+    <canvas baseChart [type]="'doughnut'" [datasets]="chartData" [labels]="chartLabels" [options]="chartOptions">
     </canvas>
   </div>
-  
+
   <div class="chart-wrapper">
-    <canvas baseChart
-            [type]="'pie'"
-      [datasets]="chartDataPie"
-      [labels]="chartLabelsPie"
-      [options]="chartOptions">
+    <canvas baseChart [type]="'pie'" [datasets]="chartDataPie" [labels]="chartLabelsPie" [options]="chartOptions">
     </canvas>
   </div>
 </div>
@@ -45,18 +37,20 @@
 <!-- Deuxième ligne de graphiques -->
 <div class="chart-row">
   <div class="chart-wrapper">
-    <canvas baseChart
-            [type]="'line'"
-      [datasets]="chartDataLine"
-      [labels]="chartLabelsLine"
-      [options]="chartOptions">
+    <canvas baseChart [type]="'line'" [datasets]="chartDataLine" [labels]="chartLabelsLine" [options]="chartOptions">
     </canvas>
   </div>
-  
+
   <!-- Ajoutez un quatrième graphique si nécessaire -->
   <div class="chart-wrapper">
-    <!-- Autre graphique ici -->
-  </div>
+    <canvas
+    baseChart
+    [type]="'bar'"
+    [datasets]="chartData"
+    [labels]="chartLabels"
+    [options]="chartOptions">
+  </canvas>
+  
 </div>
 <!-- 
 [datasets]="chartData" axe des y
@@ -64,4 +58,3 @@
 
 <!--chartDataPie= ['NbStudent','NbTeacher']-->
 <!--chartLabelsPie= ['Student','Teacher']-->
-

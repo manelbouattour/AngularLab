@@ -2,110 +2,118 @@ import { Component } from '@angular/core';
 import { EvtService } from 'src/Services/evt.service';
 import { MemberService } from 'src/Services/member.service';
 import { PubService } from 'src/Services/pub.service';
-import {ChartDataset,ChartOptions} from 'chart.js';
+import { ChartDataset, ChartOptions } from 'chart.js';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent {
+  NbMembers: number = 0;
+  NbEvents: number = 0;
+  NbArticles: number = 0;
+  NbTools: number = 0;
 
-  NbMembers:number=0;
-  NbEvents:number=0;
-  NbArticles:number=0;
-  NbTools:number=0;
-//Line : repartition des evenements par ville
-  chartData: ChartDataset[] = [
-    {      
-     data: [  ]
-    }
-  ];
-  chartLabels: string[] = ['Sousse','Tunis','Sfax'];
-  //chartOptions: ChartOptions = {};
-//Pie
+  chartData: ChartDataset[] = [];
+  chartLabels: string[] = [];
 
-  chartDataPie:ChartDataset[] = [
-    {
-      //  Add these
-      data: []
-    }
-  ];
+  chartDataPie: ChartDataset[] = [];
+  chartLabelsPie: string[] = ['Student', 'Teacher'];
 
-  chartLabelsPie :string[]=['Student','Teacher'];
-  chartOptions: ChartOptions = {};
+  chartDataLine: ChartDataset[] = [];
+  chartLabelsLine: string[] = [];
 
-  chartDataLine: ChartDataset[] = [
-    {      
-     data: [  ]
-    }
-  ];
-  
-  chartLabelsLine:string[]=[];
+  chartOptions: ChartOptions = {
+    responsive: true,
+    plugins: {
+      legend: { display: true },
+      title: {
+        display: true,
+        text: 'Event Distribution by Location',
+      },
+    },
+  };
 
-  Tab:string[]=[];
+  tab_lieu: string[] = [];
+  nbLieu: number[] = [];
 
+  Tab: string[] = [];
+  tab_nb: number[] = [];
+  nbStudent: number = 0;
+  nbTeacher: number = 0;
 
+  constructor(
+    private MS: MemberService,
+    private ES: EvtService,
+    private PS: PubService
+  ) {
+    // Members data
+    this.MS.GetAllMembers().subscribe((res) => {
+      this.NbMembers = res.length;
 
-  nbStudent:number=0;
-  nbTeacher:number=0;
-  nbSousse:number=0;
-  nbTunis:number=0;
-  nbSfax:number=0;
-  tab_nb:number[]=[]
-  constructor(private MS :MemberService,private ES:EvtService,private PS:PubService){
-    this.MS.GetAllMembers().subscribe((res)=>{
-      this.NbMembers=res.length
-        //repartition DES MEMBERS EN STUDENT/TEACHER
+      res.forEach((member: any) => {
+        member.type === 'Student' ? this.nbStudent++ : this.nbTeacher++;
+        this.Tab.push(member.name);
+        this.tab_nb.push(member.tab_evt.length);
+      });
 
-      for(let i=0;i<this.NbMembers;i++){
-        if(res[i].type=="Student")
-          this.nbStudent++;
-        else this.nbTeacher++;;
-      }
-      for(let i=0;i<this.NbMembers;i++)
+      this.chartLabelsLine = this.Tab;
+      this.chartDataLine = [
         {
-        this.Tab.push(res[i].name)
-        this.tab_nb.push(res[i].tab_evt.length)
-      }
-      this.chartLabelsLine=this.Tab;
-    this.chartDataLine=[
-      {
-        data : this.tab_nb
-
-      }
-    ];
-      this.chartDataPie= [
-        {
-          data: [this.nbStudent,this.nbTeacher]
-        }
+          label: 'Events per Member',
+          data: this.tab_nb,
+        },
       ];
-    
-    })
-    this.ES.GetAllEvents().subscribe((res)=>{
-      this.NbEvents=res.length
 
-      for(let i=0;i<this.NbEvents;i++){
-        if(res[i].Lieu=="Sousse"){
-          this.nbSousse++;}
-          else if(res[i].Lieu=="Tunis"){
-            this.nbTunis++;
-          }
-          else this.nbSfax++;
-      }
-      this.chartData= [
+      this.chartDataPie = [
         {
-          data: [this.nbSousse,this.nbTunis,this.nbSfax],
-        }
+          label: 'Members Type',
+          data: [this.nbStudent, this.nbTeacher],
+          backgroundColor: ['#42A5F5', '#66BB6A'],
+        },
       ];
-    } )
-    this.PS.getallArticles().subscribe((res)=>{
-      this.NbArticles=res.length
+    });
 
-    } )
+    // Events data
+    this.ES.GetAllEvents().subscribe((res) => {
+      this.NbEvents = res.length;
+
+      // Collect all event locations
+      res.forEach((evt: any) => {
+        this.tab_lieu.push(evt.Lieu);
+      });
+
+      // Get unique locations
+      const uniqueLocations = [...new Set(this.tab_lieu)];
+
+      // Count how many times each location appears
+      const counts = uniqueLocations.map((location) =>
+        this.tab_lieu.filter((x) => x === location).length
+      );
+
+      this.chartLabels = uniqueLocations;
+
+      this.chartData = [
+        {
+          label: 'Events by Location',
+          data: counts,
+          backgroundColor: [
+            '#FF6384',
+            '#36A2EB',
+            '#FFCE56',
+            '#8e5ea2',
+            '#3cba9f',
+            '#FF9F40',
+            '#00C49F',
+          ],
+        },
+      ];
+    });
+
+    // Articles data
+    this.PS.getallArticles().subscribe((res) => {
+      this.NbArticles = res.length;
+    });
   }
-
-
-
-
-
 }
